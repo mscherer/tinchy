@@ -23,8 +23,8 @@ def make_tinchy_url():
             tinchy_id = generate_tinchy_id()
         storage[tinchy_id] = fatty_url
         storage.close()
-        return 'Your tinchy url is: <a href="%s">%s</a>' % ( bottle.request.url + tinchy_id )
-    return 'Boo, <a href="%s">enter a proper url this time</a>.' % bottle.request.url
+        return 'Your tinchy url is: <a href="{0}">{0}</a>'.format( bottle.request.url + tinchy_id )
+    return 'Boo, <a href="{0}">enter a proper url this time</a>.'.format( bottle.request.url )
 
 @bottle.route('/<tinchy_id>')
 def redirect_to_fatty_url( tinchy_id ):
