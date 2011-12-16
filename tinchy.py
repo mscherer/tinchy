@@ -19,7 +19,7 @@ def make_tinchy_url():
     if fatty_url[:7] == 'http://':
         storage = shelve.open( 'tinchy' )
         tinchy_id = generate_tinchy_id()
-        while storage.has_key( tinchy_id ):
+        while tinchy_id in storage:
             tinchy_id = generate_tinchy_id()
         storage[tinchy_id] = fatty_url
         storage.close()
