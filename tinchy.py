@@ -15,7 +15,7 @@ def index():
 
 @bottle.post('/')
 def make_tinchy_url():
-    fatty_url = request.POST.get( 'url' , '' )
+    fatty_url = bottle.request.POST.get( 'url' , '' )
     if fatty_url[:7] == 'http://':
         storage = shelve.open( 'tinchy' )
         tinchy_id = generate_tinchy_id()
@@ -23,8 +23,8 @@ def make_tinchy_url():
             tinchy_id = generate_tinchy_id()
         storage[tinchy_id] = fatty_url
         storage.close()
-        return 'Your tinchy url is: <a href="%s">%s</a>' % ( request.url + tinchy_id )
-    return 'Boo, <a href="%s">enter a proper url this time</a>.' % request.url
+        return 'Your tinchy url is: <a href="%s">%s</a>' % ( bottle.request.url + tinchy_id )
+    return 'Boo, <a href="%s">enter a proper url this time</a>.' % bottle.request.url
 
 @bottle.route('/<tinchy_id>')
 def redirect_to_fatty_url( tinchy_id ):
@@ -33,6 +33,6 @@ def redirect_to_fatty_url( tinchy_id ):
         storage.close()
         return "Nope, this tinchy URL wasn't found." 
     storage.close()
-    redirect( storage[tinchy_id] )
+    bottle.redirect( storage[tinchy_id] )
     
 bottle.run(host='0.0.0.0', port=80)
