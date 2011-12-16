@@ -5,13 +5,13 @@ def generate_tinchy_id():
 
 @bottle.route('/')
 def index():
-    return """
+    return '''
     <h1>Get your tinchy URL!</h1>
     <form method="post">
       <input type="text" name="url" value="http://" />
       <input type="submit" value="Make it tinchy!" />
     </form>
-    """
+    '''
 
 @bottle.post('/')
 def make_tinchy_url():
@@ -32,7 +32,8 @@ def redirect_to_fatty_url( tinchy_id ):
     if tinchy_id not in storage:
         storage.close()
         return "Nope, this tinchy URL wasn't found." 
+	fatty_url = storage[tinchy_id]
     storage.close()
-    bottle.redirect( storage[tinchy_id] )
+    bottle.redirect( fatty_url )
     
 bottle.run(host='0.0.0.0', port=80)
