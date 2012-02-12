@@ -19,12 +19,13 @@ Give it to me in bullets
 ------------------------
 
 * Personal URL shortener.
-* <40 lines of code.
+* <50 lines of code.
 * [Bottle][bottle] is the only dependancy and it's only one file.
 * No database needed.
-* Good for storing a few thousand personal URLs, if you expect to be storing tens of thousands then look somewhere else. This is not a bit.ly clone :).
+* Good for storing a few thousand personal URLs, if you expect to be storing tens of thousands then look somewhere else. This is not a bit.ly clone.
 * Do whatever you want with it.
-* I hope it wont blow up but if it does then sorry :(
+* Fully [PEP8][pep8] compliant code (for those who cares :)
 
   [py]: http://python.org/
   [bottle]: http://bottlepy.org/
+  [pep8]: http://www.python.org/dev/peps/pep-0008/
