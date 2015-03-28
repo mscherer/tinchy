@@ -23,7 +23,7 @@ def index():
 @bottle.post('/')
 def make_tinchy_url():
     fatty_url = bottle.request.POST.get('url', '')
-    if fatty_url[:7] == 'http://' or fatty_url[:8] == "https://:
+    if fatty_url[:7] == 'http://' or fatty_url[:8] == 'https://':
         storage = shelve.open('tinchy')
         tinchy_id = generate_tinchy_id()
         while tinchy_id in storage:
